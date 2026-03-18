@@ -2,38 +2,48 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Frete.Já V4</title>
-
+<title>Frete.Já V4.1</title>
 <style>
-body { margin:0; font-family: Arial; }
+body { margin:0; font-family:Arial; }
 #map { height:100vh; }
-
-.btn {
+.menu { position:absolute; top:10px; left:10px; }
+.form {
   position:absolute;
-  bottom:30px;
-  left:20px;
-  right:20px;
-  background:#FF6A00;
-  color:white;
+  bottom:20px;
+  left:10px;
+  right:10px;
+  background:#1e1e1e;
+  color:#fff;
   padding:15px;
-  text-align:center;
   border-radius:10px;
-  cursor:pointer;
 }
+input { width:100%; margin:5px 0; padding:10px; }
+button { width:100%; padding:10px; margin-top:5px; background:#FF6A00; color:#fff; border:none; }
 </style>
-
 </head>
 
 <body>
 
 <div id="map"></div>
-<div class="btn" onclick="modoMotorista()">Modo Motorista</div>
+
+<div class="menu">
+  <button onclick="modoCliente()">Cliente</button>
+  <button onclick="modoMotorista()">Motorista</button>
+</div>
+
+<div class="form" id="formCliente">
+  <input id="origem" placeholder="Origem">
+  <input id="destino" placeholder="Destino">
+  <button onclick="calcularRota()">Calcular Rota</button>
+  <div id="preco"></div>
+  <button onclick="chamarMotorista()">Chamar Motorista</button>
+</div>
 
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 <script src="script.js"></script>
 
 <script async
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RIbm4lOrnJN__OQeKNzRBdsvwf7IppE&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RIbm4lOrnJN__OQeKNzRBdsvwf7IppE&libraries=places&callback=initMap">
 </script>
 
 </body>
